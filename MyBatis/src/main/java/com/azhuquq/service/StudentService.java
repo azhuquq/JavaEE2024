@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface StudentService {
     public List<Student> queryStuAll() throws IOException;
+    public Student queryStuBySid(String sid) throws IOException;
 }
