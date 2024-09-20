@@ -3,14 +3,11 @@ package com.azhuquq.service;
 import com.azhuquq.mapper.StudentMapper;
 import com.azhuquq.pojo.Student;
 import com.azhuquq.util.DBUtil;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
+import java.util.Vector;
 
 public class StudentServiceImpl implements StudentService {
     @Override
@@ -31,5 +28,25 @@ public class StudentServiceImpl implements StudentService {
             student = mapper.queryStuBySid(sid);
         }
         return student;
+    }
+
+    @Override
+    public List<Student> queryStuBySname(String sname) throws IOException {
+        List<Student> list = null;
+        try (SqlSession session = DBUtil.getSqlSession()) {
+            StudentMapper mapper = session.getMapper(StudentMapper.class);
+            list = mapper.queryStuBySname(sname);
+        }
+        return list;
+    }
+
+    @Override
+    public Vector<Student> queryStuByOthers(String sname, int sflag) throws IOException {
+        Vector<Student> list = null;
+        try (SqlSession session = DBUtil.getSqlSession()) {
+            StudentMapper mapper = session.getMapper(StudentMapper.class);
+            list = mapper.queryStuByOthers(sname, sflag);
+        }
+        return list;
     }
 }

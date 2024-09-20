@@ -9,4 +9,10 @@
     <select id="queryStuBySid" resultType="student" parameterType="String">
         select * from student where sid = #{sid}
     </select>
+    <select id="queryStuBySname" resultType="student" parameterType="String">
+        select * from student where sname like "%"#{sname}"%"
+    </select>
+    <select id="queryStuByOthers" resultType="student">
+        select * from student where sname like "%"#{name}"%" and sflag = #{flag}
+    </select>
 </mapper>

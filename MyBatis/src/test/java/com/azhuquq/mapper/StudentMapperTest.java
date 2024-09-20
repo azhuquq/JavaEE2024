@@ -16,8 +16,23 @@ public class StudentMapperTest {
             System.out.println(student.toString());
         }
     }
+
     @Test
     public void test02() throws IOException {
         System.out.println(service.queryStuBySid("s00").toString());
+    }
+
+    @Test
+    public void test03() throws IOException {
+        for (Student student : service.queryStuBySname("a")) {
+            System.out.println(student.toString());
+        }
+    }
+
+    @Test
+    public void test04() throws IOException {
+        for (Student student : service.queryStuByOthers("a", 1)) {
+            System.out.println(student.toString());
+        }
     }
 }
