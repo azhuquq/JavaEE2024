@@ -40,4 +40,15 @@ public class TeacherServiceImpl implements TeacherService {
         }
         return temp;
     }
+
+    @Override
+    public int deleteTeacherByTid(int tid) {
+        int temp = 0;
+        try (SqlSession session = DBUtil.getSqlSession()) {
+            TeacherMapper mapper = session.getMapper(TeacherMapper.class);
+            temp = mapper.deleteTeacherByTid(tid);
+            session.commit();
+        }
+        return temp;
+    }
 }

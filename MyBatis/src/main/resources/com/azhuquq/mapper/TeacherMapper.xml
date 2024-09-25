@@ -17,4 +17,7 @@
         set tpassword=#{tpassword}
         where tid=#{tid}
     </update>
+    <delete id="deleteTeacherByTid">
+        delete from school.teacher where tid=#{tid}
+    </delete>
 </mapper>

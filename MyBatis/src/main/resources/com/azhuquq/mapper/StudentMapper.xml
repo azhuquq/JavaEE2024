@@ -15,4 +15,87 @@
     <select id="queryStuByOthers" resultType="student">
         select * from student where sname like "%"#{name}"%" and sflag = #{flag}
     </select>
+    <!--    <select id="queryStuByIf" parameterType="map" resultType="student">-->
+    <!--        select * from student-->
+    <!--        <where>-->
+    <!--            <if test="sid!=null">-->
+    <!--                and sid=#{sid}-->
+    <!--            </if>-->
+    <!--            <if test="sname!=null">-->
+    <!--                and sname=#{sname}-->
+    <!--            </if>-->
+    <!--            <if test="spassword!=null">-->
+    <!--                and spassword=#{spassword}-->
+    <!--            </if>-->
+    <!--            <if test="sright!=null">-->
+    <!--                and sright=#{sright}-->
+    <!--            </if>-->
+    <!--            <if test="sflag!=null">-->
+    <!--                and sflag=#{sflag}-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--    </select>-->
+    <!--    <select id="queryStuByIf" parameterType="map" resultType="student">-->
+    <!--        select * from student-->
+    <!--        <where>-->
+    <!--            <choose>-->
+    <!--                <when test="sid!=null">-->
+    <!--                    and sid=#{sid}-->
+    <!--                </when>-->
+    <!--                <when test="sname!=null">-->
+    <!--                    and sname=#{sname}-->
+    <!--                </when>-->
+    <!--                <when test="spassword!=null">-->
+    <!--                    and spassword=#{spassword}-->
+    <!--                </when>-->
+    <!--                <when test="sright!=null">-->
+    <!--                    and sright=#{sright}-->
+    <!--                </when>-->
+    <!--                <otherwise>&lt;!&ndash; otherwise不需要条件 &ndash;&gt;-->
+    <!--                    and sflag=#{sflag}-->
+    <!--                </otherwise>-->
+    <!--            </choose>-->
+    <!--        </where>-->
+    <!--    </select>-->
+    <select id="queryStuByIf" parameterType="map" resultType="student">
+        select * from student
+        <trim prefix="where" prefixOverrides="and|or">
+            <include refid="abcd"/>
+        </trim>
+    </select>
+    <sql id="abcd">
+        <if test="sid!=null">
+            and sid=#{sid}
+        </if>
+        <if test="sname!=null">
+            and sname=#{sname}
+        </if>
+        <if test="spassword!=null">
+            and spassword=#{spassword}
+        </if>
+        <if test="sright!=null">
+            and sright=#{sright}
+        </if>
+        <if test="sflag!=null">
+            and sflag=#{sflag}
+        </if>
+    </sql>
+    <update id="updateStuBySet" parameterType="map">
+        update student
+        <set>
+            <if test="sname!=null">
+                sname=#{sname},
+            </if>
+            <if test="spassword!=null">
+                spassword=#{spassword},
+            </if>
+            <if test="sright!=null">
+                sright=#{sright},
+            </if>
+            <if test="sflag!=null">
+                sflag=#{sflag}
+            </if>
+        </set>
+        where sid=#{sid}
+    </update>
 </mapper>

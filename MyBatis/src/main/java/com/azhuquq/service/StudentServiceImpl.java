@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 public class StudentServiceImpl implements StudentService {
@@ -48,5 +49,26 @@ public class StudentServiceImpl implements StudentService {
             list = mapper.queryStuByOthers(sname, sflag);
         }
         return list;
+    }
+
+    @Override
+    public List<Student> queryStuByIf(Map<String, Object> map) {
+        List<Student> list = null;
+        try (SqlSession session = DBUtil.getSqlSession()) {
+            StudentMapper mapper = session.getMapper(StudentMapper.class);
+            list = mapper.queryStuByIf(map);
+        }
+        return list;
+    }
+
+    @Override
+    public int updateStuBySet(Map<String, Object> map) {
+        int temp = 0;
+        try (SqlSession session = DBUtil.getSqlSession()) {
+            StudentMapper mapper = session.getMapper(StudentMapper.class);
+            temp = mapper.updateStuBySet(map);
+            session.commit();
+        }
+        return temp;
     }
 }

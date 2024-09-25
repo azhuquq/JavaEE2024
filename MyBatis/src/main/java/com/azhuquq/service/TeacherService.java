@@ -10,4 +10,6 @@ public interface TeacherService {
     public int updateTeacher(Teacher teacher);
 
     public int updateTeacherPassword(Map<String, Object> map);
+
+    public int deleteTeacherByTid(int tid);
 }

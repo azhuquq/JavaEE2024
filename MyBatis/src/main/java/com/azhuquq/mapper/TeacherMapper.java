@@ -13,4 +13,7 @@ public interface TeacherMapper {
 
     // 修改密码
     public int updateTeacherPassword(Map<String, Object> map);
+
+    // 删除
+    public int deleteTeacherByTid(int tid);
 }
