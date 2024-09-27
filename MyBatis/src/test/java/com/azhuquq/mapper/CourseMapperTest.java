@@ -34,4 +34,27 @@ public class CourseMapperTest {
     public void test04() {
         System.out.println(service.deleteCourse("c05"));
     }
+
+    @Test
+    public void test05() {
+        for (Course course : service.queryCourseByCname1("JavaWeb")) {
+            System.out.println(course.toString());
+        }
+    }
+
+    @Test
+    public void test06() {
+        // 测试${}的sql注入
+        for (Course course : service.queryCourseByCname2("'JavaWeb' or 1=1")) {
+            System.out.println(course.toString());
+        }
+    }
+
+    @Test
+    public void test07() {
+        for (String tname : service.queryTnameByCid("c01")) {
+            System.out.println(tname);
+        }
+    }
+
 }

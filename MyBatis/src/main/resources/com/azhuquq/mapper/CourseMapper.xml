@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.azhuquq.mapper.CourseMapper">
+    <select id="queryTnameByCid" resultType="string" parameterType="string">
+        <!--select tname from teacher t, timetable tt where t.tid = tt.tid and tt.cid = #{cid}-->
+        select tname from teacher t inner join timetable tt on t.tid = tt.tid where tt.cid = #{cid}
+    </select>
+</mapper>

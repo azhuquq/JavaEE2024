@@ -1,6 +1,7 @@
 package com.azhuquq.mapper;
 
 import com.azhuquq.pojo.Teacher;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.Map;
 
@@ -16,4 +17,7 @@ public interface TeacherMapper {
 
     // 删除
     public int deleteTeacherByTid(int tid);
+
+    @Select("select tname from teacher where tid = #{tid}")
+    public String queryTnameByTid(int tid);
 }

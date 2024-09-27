@@ -13,12 +13,38 @@ import java.util.Vector;
 public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> queryStuAll() throws IOException {
-        List<Student> list = null;
-        try (SqlSession session = DBUtil.getSqlSession()) {
-            StudentMapper mapper = session.getMapper(StudentMapper.class);
-            list = mapper.queryStuAll();
-        }
-        return list;
+        List<Student> list1 = null;
+        List<Student> list2 = null;
+        // 2024/09/27 课程 测试缓存机制
+        // 测试一级缓存与二级缓存的区别
+//        try (SqlSession session = DBUtil.getSqlSession()) {
+//            StudentMapper mapper = session.getMapper(StudentMapper.class);
+//            list1 = mapper.queryStuAll();
+//            System.out.println("-------- list 1 --------");
+////            StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+////            list2 = studentMapper.queryStuAll();
+////            System.out.println("-------- list 2 --------");
+//        }
+//        try (SqlSession session = DBUtil.getSqlSession()) {
+////            StudentMapper mapper = session.getMapper(StudentMapper.class);
+////            list1 = mapper.queryStuAll();
+////            System.out.println("-------- list 1 --------");
+//            StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+//            list2 = studentMapper.queryStuAll();
+//            System.out.println("-------- list 2 --------");
+//        }
+        // 一级缓存是基于SqlSession来缓存的，二级缓存需要到Mapper.xml里面使用<cache />标签开启
+        // 测试二级缓存开启状态下
+        SqlSession session1 = DBUtil.getSqlSession();
+        StudentMapper mapper = session1.getMapper(StudentMapper.class);
+        list1 = mapper.queryStuAll();
+        System.out.println("-------- list 1 --------");
+        SqlSession session2 = DBUtil.getSqlSession();
+        StudentMapper studentMapper = session2.getMapper(StudentMapper.class);
+        list2 = studentMapper.queryStuAll();
+        System.out.println("-------- list 2 --------");
+        // 二级缓存是基于SqlSessionFactory的，它的缓存是存储在SqlSessionFactory级别的。
+        return list1;
     }
 
     @Override

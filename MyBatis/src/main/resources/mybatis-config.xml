@@ -28,6 +28,7 @@
         <mapper resource="com/azhuquq/mapper/StudentMapper.xml"/>
         <mapper class="com.azhuquq.mapper.TeacherMapper"/>
         <mapper class="com.azhuquq.mapper.CourseMapper"/>
+        <mapper class="com.azhuquq.mapper.TimetableMapper"/>
         <!--<package name="com.azhuquq.mapper"/>-->
     </mappers>
 </configuration>

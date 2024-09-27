@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.azhuquq.mapper.StudentMapper">
+    <cache/>
     <select id="queryStuAll" resultType="student">
         select * from student
     </select>
@@ -15,6 +16,7 @@
     <select id="queryStuByOthers" resultType="student">
         select * from student where sname like "%"#{name}"%" and sflag = #{flag}
     </select>
+    <!-- solution 1 -->
     <!--    <select id="queryStuByIf" parameterType="map" resultType="student">-->
     <!--        select * from student-->
     <!--        <where>-->
@@ -35,6 +37,7 @@
     <!--            </if>-->
     <!--        </where>-->
     <!--    </select>-->
+    <!-- solution 2 -->
     <!--    <select id="queryStuByIf" parameterType="map" resultType="student">-->
     <!--        select * from student-->
     <!--        <where>-->
@@ -57,32 +60,42 @@
     <!--            </choose>-->
     <!--        </where>-->
     <!--    </select>-->
+    <!-- solution 3 -->
+    <!--    <select id="queryStuByIf" parameterType="map" resultType="student">-->
+    <!--        select * from student-->
+    <!--        <trim prefix="where" prefixOverrides="and|or">-->
+    <!--            <include refid="abcd"/>-->
+    <!--        </trim>-->
+    <!--    </select>-->
+    <!--    <sql id="abcd">-->
+    <!--        <if test="sid!=null">-->
+    <!--            and sid=#{sid}-->
+    <!--        </if>-->
+    <!--        <if test="sname!=null">-->
+    <!--            and sname=#{sname}-->
+    <!--        </if>-->
+    <!--        <if test="spassword!=null">-->
+    <!--            and spassword=#{spassword}-->
+    <!--        </if>-->
+    <!--        <if test="sright!=null">-->
+    <!--            and sright=#{sright}-->
+    <!--        </if>-->
+    <!--        <if test="sflag!=null">-->
+    <!--            and sflag=#{sflag}-->
+    <!--        </if>-->
+    <!--    </sql>-->
+    <!-- solution 4 -->
     <select id="queryStuByIf" parameterType="map" resultType="student">
         select * from student
-        <trim prefix="where" prefixOverrides="and|or">
-            <include refid="abcd"/>
-        </trim>
+        <where>
+            <foreach collection="sids" item="perSid" separator="or">
+                sid = #{perSid}
+            </foreach>
+        </where>
     </select>
-    <sql id="abcd">
-        <if test="sid!=null">
-            and sid=#{sid}
-        </if>
-        <if test="sname!=null">
-            and sname=#{sname}
-        </if>
-        <if test="spassword!=null">
-            and spassword=#{spassword}
-        </if>
-        <if test="sright!=null">
-            and sright=#{sright}
-        </if>
-        <if test="sflag!=null">
-            and sflag=#{sflag}
-        </if>
-    </sql>
     <update id="updateStuBySet" parameterType="map">
         update student
-        <set>
+        <trim prefix="set" suffixOverrides=",">
             <if test="sname!=null">
                 sname=#{sname},
             </if>
@@ -95,7 +108,21 @@
             <if test="sflag!=null">
                 sflag=#{sflag}
             </if>
-        </set>
+        </trim>
+        <!--        <set>-->
+        <!--            <if test="sname!=null">-->
+        <!--                sname=#{sname},-->
+        <!--            </if>-->
+        <!--            <if test="spassword!=null">-->
+        <!--                spassword=#{spassword},-->
+        <!--            </if>-->
+        <!--            <if test="sright!=null">-->
+        <!--                sright=#{sright},-->
+        <!--            </if>-->
+        <!--            <if test="sflag!=null">-->
+        <!--                sflag=#{sflag}-->
+        <!--            </if>-->
+        <!--        </set>-->
         where sid=#{sid}
     </update>
 </mapper>

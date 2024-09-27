@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class StudentMapperTest {
@@ -40,12 +42,23 @@ public class StudentMapperTest {
 
     @Test
     public void test05() {
+        // solution 1
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("sid", "s00");
+//        map.put("sname", "admin");
+//        map.put("spassword", "123");
+//        map.put("sright", "1");
+//        map.put("sflag", "1");
+//        for (Student student : service.queryStuByIf(map)) {
+//            System.out.println(student.toString());
+//        }
+        // solution 2
         Map<String, Object> map = new HashMap<>();
-        map.put("sid", "s00");
-        map.put("sname", "admin");
-        map.put("spassword", "123");
-        map.put("sright", "1");
-        map.put("sflag", "1");
+        List<String> list = new LinkedList<>();
+        list.add("s01");
+        list.add("s02");
+        list.add("s03");
+        map.put("sids", list);
         for (Student student : service.queryStuByIf(map)) {
             System.out.println(student.toString());
         }

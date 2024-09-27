@@ -5,11 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Student {
+public class Student implements Serializable {
     private String sid;
     private String sname;
     private String spassword;
