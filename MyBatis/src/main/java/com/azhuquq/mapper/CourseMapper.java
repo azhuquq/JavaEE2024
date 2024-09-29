@@ -1,12 +1,15 @@
 package com.azhuquq.mapper;
 
 import com.azhuquq.pojo.Course;
+import com.azhuquq.pojo.CourseExtend;
+import com.azhuquq.pojo.CourseTeacherTimetable;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CourseMapper {
     @Select("select * from course")
@@ -29,4 +32,8 @@ public interface CourseMapper {
     public int deleteCourse(String cid);
 
     public List<String> queryTnameByCid(String cid);
+
+    // 需求变更：已知cid，需查询出上课地点、时间、课程名字、教师名字
+//    public List<CourseTeacherTimetable> queryInfoByCid(String cid);
+    public List<CourseExtend> queryInfoByCid(String cid);
 }

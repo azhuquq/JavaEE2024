@@ -9,10 +9,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Timetable {
-    private String tid;
+public class CourseTeacherTimetable {
     private String cid;
+    private String cname;
+    private int flag;
+
+    private int tid;
+    private String tname;
+    private String tpassword;
+    private int tright;
+    private int tflag;
+
     private String classroom;
     private String classtime;
-    private int flag;
 }

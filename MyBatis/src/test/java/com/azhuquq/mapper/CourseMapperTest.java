@@ -1,6 +1,7 @@
 package com.azhuquq.mapper;
 
 import com.azhuquq.pojo.Course;
+import com.azhuquq.pojo.CourseExtend;
 import com.azhuquq.service.CourseService;
 import com.azhuquq.service.CourseServiceImpl;
 import org.junit.Test;
@@ -57,4 +58,10 @@ public class CourseMapperTest {
         }
     }
 
+    @Test
+    public void test08() {
+        for (CourseExtend ctt : service.queryInfoByCid("c01")) {
+            System.out.println(ctt);
+        }
+    }
 }

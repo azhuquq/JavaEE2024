@@ -4,12 +4,15 @@ import com.azhuquq.mapper.CourseMapper;
 import com.azhuquq.mapper.TeacherMapper;
 import com.azhuquq.mapper.TimetableMapper;
 import com.azhuquq.pojo.Course;
+import com.azhuquq.pojo.CourseExtend;
+import com.azhuquq.pojo.CourseTeacherTimetable;
 import com.azhuquq.util.DBUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class CourseServiceImpl implements CourseService {
     @Override
@@ -93,6 +96,16 @@ public class CourseServiceImpl implements CourseService {
         try (SqlSession session = DBUtil.getSqlSession()) {
             CourseMapper mapper = session.getMapper(CourseMapper.class);
             list = mapper.queryTnameByCid(cid);
+        }
+        return list;
+    }
+
+    @Override
+    public List<CourseExtend> queryInfoByCid(String cid) {
+        List<CourseExtend> list = null;
+        try (SqlSession session = DBUtil.getSqlSession()) {
+            CourseMapper mapper = session.getMapper(CourseMapper.class);
+            list = mapper.queryInfoByCid(cid);
         }
         return list;
     }
