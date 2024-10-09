@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="helloSpring" class="com.azhuquq.demo01.HelloSpring"/>
+    <bean id="helloJava" class="com.azhuquq.demo01.HelloJava"/>
+
+    <bean id="studentService" class="com.azhuquq.demo03.service.StudentServiceMysqlImpl"/>
+</beans>
