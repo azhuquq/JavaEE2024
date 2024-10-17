@@ -3,8 +3,24 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		https://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="helloSpring" class="com.azhuquq.demo01.HelloSpring"/>
+    <!--    <bean id="helloSpring" class="com.azhuquq.demo01.HelloSpring">-->
+    <!--        <property name="name" value="zhangsan"/>-->
+    <!--        <property name="age" value="20"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="helloSpring" class="com.azhuquq.demo01.HelloSpring">-->
+    <!--        <constructor-arg name="name" value="lisi"/>-->
+    <!--        <constructor-arg name="age" value="25"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="helloSpring" class="com.azhuquq.demo01.HelloSpring">-->
+    <!--        <constructor-arg index="0" value="wangwu"/>-->
+    <!--        <constructor-arg index="1" value="30"/>-->
+    <!--    </bean>-->
+    <bean id="helloSpring" class="com.azhuquq.demo01.HelloSpring">
+        <constructor-arg type="java.lang.String" value="wangwu"/>
+        <constructor-arg type="int" value="30"/>
+    </bean>
     <bean id="helloJava" class="com.azhuquq.demo01.HelloJava"/>
 
-    <bean id="studentService" class="com.azhuquq.demo03.service.StudentServiceMysqlImpl"/>
+    <import resource="demo04Beans.xml" />
+
 </beans>
