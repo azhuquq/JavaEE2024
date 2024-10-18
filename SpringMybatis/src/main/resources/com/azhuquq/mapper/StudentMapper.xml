@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.azhuquq.mapper.StudentMapper">
+<!--    <cache/>-->
+    <select id="queryStuAll" resultType="student">
+        select * from student
+    </select>
+<!--    <select id="queryStuBySid" resultType="student" parameterType="String">-->
+<!--        select * from student where sid = #{sid}-->
+<!--    </select>-->
+<!--    <select id="queryStuBySname" resultType="student" parameterType="String">-->
+<!--        select * from student where sname like "%"#{sname}"%"-->
+<!--    </select>-->
+<!--    <select id="queryStuByOthers" resultType="student">-->
+<!--        select * from student where sname like "%"#{name}"%" and sflag = #{flag}-->
+<!--    </select>-->
+<!--    &lt;!&ndash; solution 1 &ndash;&gt;-->
+<!--    &lt;!&ndash;    <select id="queryStuByIf" parameterType="map" resultType="student">&ndash;&gt;-->
+<!--    &lt;!&ndash;        select * from student&ndash;&gt;-->
+<!--    &lt;!&ndash;        <where>&ndash;&gt;-->
+<!--    &lt;!&ndash;            <if test="sid!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;                and sid=#{sid}&ndash;&gt;-->
+<!--    &lt;!&ndash;            </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;            <if test="sname!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;                and sname=#{sname}&ndash;&gt;-->
+<!--    &lt;!&ndash;            </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;            <if test="spassword!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;                and spassword=#{spassword}&ndash;&gt;-->
+<!--    &lt;!&ndash;            </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;            <if test="sright!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;                and sright=#{sright}&ndash;&gt;-->
+<!--    &lt;!&ndash;            </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;            <if test="sflag!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;                and sflag=#{sflag}&ndash;&gt;-->
+<!--    &lt;!&ndash;            </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </where>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </select>&ndash;&gt;-->
+<!--    &lt;!&ndash; solution 2 &ndash;&gt;-->
+<!--    &lt;!&ndash;    <select id="queryStuByIf" parameterType="map" resultType="student">&ndash;&gt;-->
+<!--    &lt;!&ndash;        select * from student&ndash;&gt;-->
+<!--    &lt;!&ndash;        <where>&ndash;&gt;-->
+<!--    &lt;!&ndash;            <choose>&ndash;&gt;-->
+<!--    &lt;!&ndash;                <when test="sid!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;                    and sid=#{sid}&ndash;&gt;-->
+<!--    &lt;!&ndash;                </when>&ndash;&gt;-->
+<!--    &lt;!&ndash;                <when test="sname!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;                    and sname=#{sname}&ndash;&gt;-->
+<!--    &lt;!&ndash;                </when>&ndash;&gt;-->
+<!--    &lt;!&ndash;                <when test="spassword!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;                    and spassword=#{spassword}&ndash;&gt;-->
+<!--    &lt;!&ndash;                </when>&ndash;&gt;-->
+<!--    &lt;!&ndash;                <when test="sright!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;                    and sright=#{sright}&ndash;&gt;-->
+<!--    &lt;!&ndash;                </when>&ndash;&gt;-->
+<!--    &lt;!&ndash;                <otherwise>&lt;!&ndash; otherwise不需要条件 &ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;                    and sflag=#{sflag}&ndash;&gt;-->
+<!--    &lt;!&ndash;                </otherwise>&ndash;&gt;-->
+<!--    &lt;!&ndash;            </choose>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </where>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </select>&ndash;&gt;-->
+<!--    &lt;!&ndash; solution 3 &ndash;&gt;-->
+<!--    &lt;!&ndash;    <select id="queryStuByIf" parameterType="map" resultType="student">&ndash;&gt;-->
+<!--    &lt;!&ndash;        select * from student&ndash;&gt;-->
+<!--    &lt;!&ndash;        <trim prefix="where" prefixOverrides="and|or">&ndash;&gt;-->
+<!--    &lt;!&ndash;            <include refid="abcd"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </trim>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </select>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <sql id="abcd">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <if test="sid!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;            and sid=#{sid}&ndash;&gt;-->
+<!--    &lt;!&ndash;        </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <if test="sname!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;            and sname=#{sname}&ndash;&gt;-->
+<!--    &lt;!&ndash;        </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <if test="spassword!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;            and spassword=#{spassword}&ndash;&gt;-->
+<!--    &lt;!&ndash;        </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <if test="sright!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;            and sright=#{sright}&ndash;&gt;-->
+<!--    &lt;!&ndash;        </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <if test="sflag!=null">&ndash;&gt;-->
+<!--    &lt;!&ndash;            and sflag=#{sflag}&ndash;&gt;-->
+<!--    &lt;!&ndash;        </if>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </sql>&ndash;&gt;-->
+<!--    &lt;!&ndash; solution 4 &ndash;&gt;-->
+<!--    <select id="queryStuByIf" parameterType="map" resultType="student">-->
+<!--        select * from student-->
+<!--        <where>-->
+<!--            <foreach collection="sids" item="perSid" separator="or">-->
+<!--                sid = #{perSid}-->
+<!--            </foreach>-->
+<!--        </where>-->
+<!--    </select>-->
+<!--    <update id="updateStuBySet" parameterType="map">-->
+<!--        update student-->
+<!--        <trim prefix="set" suffixOverrides=",">-->
+<!--            <if test="sname!=null">-->
+<!--                sname=#{sname},-->
+<!--            </if>-->
+<!--            <if test="spassword!=null">-->
+<!--                spassword=#{spassword},-->
+<!--            </if>-->
+<!--            <if test="sright!=null">-->
+<!--                sright=#{sright},-->
+<!--            </if>-->
+<!--            <if test="sflag!=null">-->
+<!--                sflag=#{sflag}-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--        &lt;!&ndash;        <set>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <if test="sname!=null">&ndash;&gt;-->
+<!--        &lt;!&ndash;                sname=#{sname},&ndash;&gt;-->
+<!--        &lt;!&ndash;            </if>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <if test="spassword!=null">&ndash;&gt;-->
+<!--        &lt;!&ndash;                spassword=#{spassword},&ndash;&gt;-->
+<!--        &lt;!&ndash;            </if>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <if test="sright!=null">&ndash;&gt;-->
+<!--        &lt;!&ndash;                sright=#{sright},&ndash;&gt;-->
+<!--        &lt;!&ndash;            </if>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <if test="sflag!=null">&ndash;&gt;-->
+<!--        &lt;!&ndash;                sflag=#{sflag}&ndash;&gt;-->
+<!--        &lt;!&ndash;            </if>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </set>&ndash;&gt;-->
+<!--        where sid=#{sid}-->
+<!--    </update>-->
+</mapper>

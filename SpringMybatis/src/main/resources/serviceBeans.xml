@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--当前系统的核心是业务层和数据操作层，这个文件主要配置业务层的Bean-->
+    <bean id="studentService" class="com.azhuquq.service.StudentServiceImpl">
+        <property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+    </bean>
+</beans>

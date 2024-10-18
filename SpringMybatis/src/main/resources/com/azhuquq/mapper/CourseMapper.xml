@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.azhuquq.mapper.CourseMapper">
+<!--    <select id="queryTnameByCid" resultType="string" parameterType="string">-->
+<!--        &lt;!&ndash;select tname from teacher t, timetable tt where t.tid = tt.tid and tt.cid = #{cid}&ndash;&gt;-->
+<!--        select tname from teacher t inner join timetable tt on t.tid = tt.tid where tt.cid = #{cid}-->
+<!--    </select>-->
+<!--    <select id="queryInfoByCid" resultType="courseExtend" resultMap="courseExtendMap" parameterType="String">-->
+<!--        &lt;!&ndash;-->
+<!--        select * from teacher t-->
+<!--        inner join timetable tt on t.tid = tt.tid-->
+<!--        inner join course c on c.cid = tt.cid-->
+<!--        where tt.cid = #{cid}-->
+<!--        &ndash;&gt;-->
+<!--        select-->
+<!--        c.cid c_cid,-->
+<!--        c.cname c_cname,-->
+<!--        c.flag flag,-->
+<!--        t.tid t_tid,-->
+<!--        t.tname t_tname,-->
+<!--        t.tpassword t_tpassword,-->
+<!--        t.tright t_tright,-->
+<!--        t.tflag t_tflag,-->
+<!--        tt.tid tt_tid,-->
+<!--        tt.cid tt_cid,-->
+<!--        tt.classroom tt_classroom,-->
+<!--        tt.classtime tt_classtime,-->
+<!--        tt.flag tt_flag-->
+<!--        from teacher t-->
+<!--        inner join timetable tt on t.tid = tt.tid-->
+<!--        inner join course c on c.cid = tt.cid-->
+<!--        where tt.cid = #{cid}-->
+<!--    </select>-->
+<!--    <resultMap id="courseExtendMap" type="courseExtend">-->
+<!--        <result column="c_cid" property="cid"/>-->
+<!--        <result column="c_cname" property="cname"/>-->
+<!--        <result column="c_flag" property="flag"/>-->
+<!--        <result column="t_tid" property="teacher.tid"/>-->
+<!--        <result column="t_tname" property="teacher.tname"/>-->
+<!--        <result column="t_tright" property="teacher.tright"/>-->
+<!--        <result column="t_tflag" property="teacher.tflag"/>-->
+<!--        <result column="tt_tid" property="timetable.tid"/>-->
+<!--        <result column="tt_cid" property="timetable.cid"/>-->
+<!--        <result column="tt_classroom" property="timetable.classroom"/>-->
+<!--        <result column="tt_classtime" property="timetable.classtime"/>-->
+<!--        <result column="tt_flag" property="timetable.flag"/>-->
+<!--    </resultMap>-->
+</mapper>

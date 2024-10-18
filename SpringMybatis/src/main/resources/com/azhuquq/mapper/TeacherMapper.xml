@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.azhuquq.mapper.TeacherMapper">
+<!--    <insert id="insertTeacher" parameterType="teacher">-->
+<!--        insert into school.teacher(tname,tpassword,tright,tflag)-->
+<!--        values(#{tname},#{tpassword},#{tright},#{tflag})-->
+<!--    </insert>-->
+<!--    <update id="updateTeacher" parameterType="teacher">-->
+<!--        update school.teacher-->
+<!--        set tname=#{tname},tpassword=#{tpassword},tright=#{tright},tflag=#{tflag}-->
+<!--        where tid=#{tid}-->
+<!--    </update>-->
+<!--    <update id="updateTeacherPassword" parameterType="map">-->
+<!--        update school.teacher-->
+<!--        set tpassword=#{tpassword}-->
+<!--        where tid=#{tid}-->
+<!--    </update>-->
+<!--    <delete id="deleteTeacherByTid">-->
+<!--        delete from school.teacher where tid=#{tid}-->
+<!--    </delete>-->
+</mapper>
