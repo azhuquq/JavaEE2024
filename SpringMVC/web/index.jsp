@@ -13,10 +13,15 @@
 <body>
 <h1>index</h1>
 <a href="/hello">hello</a>
-<form action="/login">
-    <input type="text" name="sname">
-    <input type="password" name="spassword">
-    <input type="submit" name="登入">
+<a href="/stu/test01">test01</a>
+<a href="/stu/test02">test02</a>
+<form action="/stu/test03">
+    <input type="text" name="sid"/>
+    <input type="text" name="sname"/>
+    <input type="password" name="spassword"/>
+    <input type="text" name="sright"/>
+    <input type="text" name="sflag"/>
+    <input type="submit" name="注册">
 </form>
 <a href="/mvctest">Spring MVC Test</a>
 </body>
