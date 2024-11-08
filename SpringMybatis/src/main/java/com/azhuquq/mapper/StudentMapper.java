@@ -1,26 +1,23 @@
 package com.azhuquq.mapper;
 
 import com.azhuquq.pojo.Student;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Vector;
 
 public interface StudentMapper {
+    @Select("select * from student")
     public List<Student> queryStuAll();
-//
-//    public Student queryStuBySid(String sid);
-//
-//    // 模糊查询
-//    public List<Student> queryStuBySname(String sname);
-//
-//    // 多条件查询
-//    public Vector<Student> queryStuByOthers(@Param("name") String sname, @Param("flag") int sflag);
-//
-//    // 提出需求：有多个条件输入，进行查询，条件的个数是不确定的
-//    public List<Student> queryStuByIf(Map<String, Object> map);
-//
-//    // 提出需求：有多个条件输入，进行更新，条件的个数是不确定的
-//    public int updateStuBySet(Map<String, Object> map);
+
+    @Insert("insert into student values(#{sid},#{sname},#{spassword},#{sright},#{sflag})")
+    public int insertStudent(Student student);
+
+    @Update("update student set sname=#{sname},spassword=#{spassword},sright=#{sright},sflag=#{sflag} where sid=#{sid}")
+    public int updateStudent(Student student);
+
+    @Delete("delete from student where sid=#{sid}")
+    public int deleteStudent(String sid);
 }

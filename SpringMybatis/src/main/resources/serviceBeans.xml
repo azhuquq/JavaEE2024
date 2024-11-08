@@ -7,4 +7,5 @@
     <bean id="studentService" class="com.azhuquq.service.StudentServiceImpl">
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
     </bean>
+    <bean id="courseService" class="com.azhuquq.service.CourseServiceImpl"/>
 </beans>

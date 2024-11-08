@@ -2,11 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     <!--这个配置文件是总配置文件-->
+    <!-- 启用Spring AOP -->
+    <aop:aspectj-autoproxy/>
+    <context:component-scan base-package="com.azhuquq"/>
     <!--第1件事 引入其他各个模块的配置文件-->
     <import resource="serviceBeans.xml"/>
     <!--第2件事 配置整个项目的全局配置信息-->
@@ -32,4 +38,7 @@
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
+
+    <!-- 定义切面bean -->
+    <bean id="logAspect" class="com.azhuquq.aop.Log"/>
 </beans>
